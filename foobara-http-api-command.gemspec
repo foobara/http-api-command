@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
 
   spec.summary = "No description. Add one."
   spec.homepage = "https://github.com/foobara/http-api-command"
-  spec.license = "None specified yet"
+  spec.license = "MPL-2.0"
   spec.required_ruby_version = ">= #{File.read("#{__dir__}/.ruby-version")}"
 
   spec.metadata["homepage_uri"] = spec.homepage
