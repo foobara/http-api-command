@@ -59,7 +59,7 @@ module Foobara
         self.foobara_url_block = if block_given?
                                    block
                                  else
-                                   -> { string }
+                                   proc { string }
                                  end
       end
     end
