@@ -1,0 +1,163 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/versions/foobara.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - rubygems.org
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '11366'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Last-Modified:
+      - Thu, 31 Oct 2024 02:37:47 GMT
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-vZn6ZdPpqzWiuOUiUAJ4t+uIV6LJAa/djuZon4OeUR4='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-4ebe42dce0c0359a80ca455d04e2a5ec';
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; connect-src
+        'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3A1c5f0510640803f4a59cc5b9773039b0266f2d25%2Cenv%3Aproduction%2Ctrace_id%3A2111006144085467280
+      X-Request-Id:
+      - 249d0fae-2a73-40bd-b88f-0fda09d0cb23
+      X-Runtime:
+      - '0.011224'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 52.38.203.82:443
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      Date:
+      - Sat, 09 Nov 2024 03:43:08 GMT
+      Via:
+      - 1.1 varnish
+      X-Served-By:
+      - cache-pao-kpao1770035-PAO
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+      X-Timer:
+      - S1731123788.322670,VS0,VE103
+      Vary:
+      - Accept-Encoding
+      Etag:
+      - '"e78f12c39579889c4df3a3711f7d61a1"'
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"authors":"Miles Georgi","built_at":"2024-10-31T00:00:00.000Z","created_at":"2024-10-31T02:37:47.001Z","description":"Implements
+        command pattern for encapsulating and managing domain complexity as well as
+        many supporting libraries including entities.","downloads_count":150,"metadata":{"homepage_uri":"https://github.com/foobara/foobara","changelog_uri":"https://github.com/foobara/foobara/CHANGELOG.md","source_code_uri":"https://github.com/foobara/foobara","rubygems_mfa_required":"true"},"number":"0.0.12","summary":"Implements
+        command pattern for encapsulating and managing domain complexity as well as
+        many supporting libraries including entities.","platform":"ruby","rubygems_version":"\u003e=
+        0","ruby_version":"\u003e= 3.2.2","prerelease":false,"licenses":["MPL-2.0"],"requirements":[],"sha":"05a63bb9f7208e34579b1106c3ced58fe9c5d077c77f3ffe12903d79742edcb0","spec_sha":"28a2e11265a6d9e0de842dc1c86666ef21d19d0b8c795bc114c421ab888bcc5b"},{"authors":"Miles
+        Georgi","built_at":"2024-10-27T00:00:00.000Z","created_at":"2024-10-27T22:47:38.516Z","description":"Implements
+        command pattern for encapsulating and managing domain complexity as well as
+        many supporting libraries including entities.","downloads_count":144,"metadata":{"homepage_uri":"https://github.com/foobara/foobara","changelog_uri":"https://github.com/foobara/foobara/CHANGELOG.md","source_code_uri":"https://github.com/foobara/foobara","rubygems_mfa_required":"true"},"number":"0.0.11","summary":"Implements
+        command pattern for encapsulating and managing domain complexity as well as
+        many supporting libraries including entities.","platform":"ruby","rubygems_version":"\u003e=
+        0","ruby_version":"\u003e= 3.2.2","prerelease":false,"licenses":["MPL-2.0"],"requirements":[],"sha":"53e04dc713813fa57395cd3f58725e90508d9ef7b4c25311eda6dee55b06f96a","spec_sha":"dec9569f84c577296e8c965bb4b9cf8c37ec2e550833238e208d5fc53d2892b7"},{"authors":"Miles
+        Georgi","built_at":"2024-10-26T00:00:00.000Z","created_at":"2024-10-26T18:00:08.595Z","description":"Implements
+        command pattern for encapsulating and managing domain complexity as well as
+        many supporting libraries including entities.","downloads_count":149,"metadata":{"homepage_uri":"https://github.com/foobara/foobara","changelog_uri":"https://github.com/foobara/foobara/CHANGELOG.md","source_code_uri":"https://github.com/foobara/foobara","rubygems_mfa_required":"true"},"number":"0.0.10","summary":"Implements
+        command pattern for encapsulating and managing domain complexity as well as
+        many supporting libraries including entities.","platform":"ruby","rubygems_version":"\u003e=
+        0","ruby_version":"\u003e= 3.2.2","prerelease":false,"licenses":["AGPL-3.0"],"requirements":[],"sha":"2a72c3b2eb5d5aee6c8c49add1766cbd39afa608e46e742d87c6ebe759907a4c","spec_sha":"537f5ca732e94a21e2accdaf58093b3689305f08647ab7f8dd29e5c028c61918"},{"authors":"Miles
+        Georgi","built_at":"2024-09-12T00:00:00.000Z","created_at":"2024-09-12T04:32:08.238Z","description":"Implements
+        command pattern for encapsulating and managing domain complexity as well as
+        many supporting libraries including entities.","downloads_count":159,"metadata":{"homepage_uri":"https://github.com/foobara/foobara","changelog_uri":"https://github.com/foobara/foobara/CHANGELOG.md","source_code_uri":"https://github.com/foobara/foobara","rubygems_mfa_required":"true"},"number":"0.0.9","summary":"Implements
+        command pattern for encapsulating and managing domain complexity as well as
+        many supporting libraries including entities.","platform":"ruby","rubygems_version":"\u003e=
+        0","ruby_version":"\u003e= 3.2.2","prerelease":false,"licenses":["AGPL-3.0"],"requirements":[],"sha":"08fd6e062f8e28fdec01975b744c95279bf2d0a08f9a48c178504237f7d8974b","spec_sha":"ca170cefb142159c060f44020ba77b692fb5ac91922f156c98a546ca4a144228"},{"authors":"Miles
+        Georgi","built_at":"2024-08-24T00:00:00.000Z","created_at":"2024-08-24T02:13:29.175Z","description":"Implements
+        command pattern for encapsulating and managing domain complexity as well as
+        many supporting libraries including entities.","downloads_count":186,"metadata":{"homepage_uri":"https://github.com/foobara/foobara","changelog_uri":"https://github.com/foobara/foobara/CHANGELOG.md","source_code_uri":"https://github.com/foobara/foobara","rubygems_mfa_required":"true"},"number":"0.0.8","summary":"Implements
+        command pattern for encapsulating and managing domain complexity as well as
+        many supporting libraries including entities.","platform":"ruby","rubygems_version":"\u003e=
+        0","ruby_version":"\u003e= 3.2.2","prerelease":false,"licenses":["AGPL-3.0"],"requirements":[],"sha":"2a8d06ed5fdb7fb9415a33730794236318444f3efd82ab9a28774ba7c658f3bc","spec_sha":"ef1598c1fbaaf026e7e64885e2fd8ef0a59620c9d3ddc388d358b1e58af121df"},{"authors":"Miles
+        Georgi","built_at":"2024-08-22T00:00:00.000Z","created_at":"2024-08-22T03:12:43.719Z","description":"Implements
+        command pattern for encapsulating and managing domain complexity as well as
+        many supporting libraries including entities.","downloads_count":179,"metadata":{"homepage_uri":"https://github.com/foobara/foobara","changelog_uri":"https://github.com/foobara/foobara/CHANGELOG.md","source_code_uri":"https://github.com/foobara/foobara","rubygems_mfa_required":"true"},"number":"0.0.7","summary":"Implements
+        command pattern for encapsulating and managing domain complexity as well as
+        many supporting libraries including entities.","platform":"ruby","rubygems_version":"\u003e=
+        0","ruby_version":"\u003e= 3.2.2","prerelease":false,"licenses":["AGPL-3.0"],"requirements":[],"sha":"924350fe5d30e44b91feeb59ad119e3c1751bac52a58736c0b9cbd486cf7fb42","spec_sha":"a5fe4ca52596d59dae7b91e5b5aa149f287380b83260a9229e670c0277172cc4"},{"authors":"Miles
+        Georgi","built_at":"2024-08-22T00:00:00.000Z","created_at":"2024-08-22T01:33:42.278Z","description":"Implements
+        command pattern for encapsulating and managing domain complexity as well as
+        many supporting libraries including entities.","downloads_count":120,"metadata":{"homepage_uri":"https://github.com/foobara/foobara","changelog_uri":"https://github.com/foobara/foobara/CHANGELOG.md","source_code_uri":"https://github.com/foobara/foobara","rubygems_mfa_required":"true"},"number":"0.0.6","summary":"Implements
+        command pattern for encapsulating and managing domain complexity as well as
+        many supporting libraries including entities.","platform":"ruby","rubygems_version":"\u003e=
+        0","ruby_version":"\u003e= 3.2.2","prerelease":false,"licenses":["AGPL-3.0"],"requirements":[],"sha":"e488a3a00a34f69b7363f951f57a13ba9e875f2f2a2aa902348415376c2fa9b4","spec_sha":"f012d882390adb06fdc457a34523f17380db80a8c5853becf7368f7757baedb8"},{"authors":"Miles
+        Georgi","built_at":"2024-08-22T00:00:00.000Z","created_at":"2024-08-22T00:17:00.369Z","description":"Implements
+        command pattern for encapsulating and managing domain complexity as well as
+        many supporting libraries including entities.","downloads_count":132,"metadata":{"homepage_uri":"https://github.com/foobara/foobara","changelog_uri":"https://github.com/foobara/foobara/CHANGELOG.md","source_code_uri":"https://github.com/foobara/foobara","rubygems_mfa_required":"true"},"number":"0.0.5","summary":"Implements
+        command pattern for encapsulating and managing domain complexity as well as
+        many supporting libraries including entities.","platform":"ruby","rubygems_version":"\u003e=
+        0","ruby_version":"\u003e= 3.2.2","prerelease":false,"licenses":["AGPL-3.0"],"requirements":[],"sha":"91d295439bcd1ba1b9286149989f374e286177aacb62855b2fc7d1fa928278b6","spec_sha":"5a2a33c288739d333b9d412ca00bb9cfaad473f252037e314a42aac13df0fd5b"},{"authors":"Miles
+        Georgi","built_at":"2024-08-19T00:00:00.000Z","created_at":"2024-08-19T21:47:53.791Z","description":"Implements
+        command pattern for encapsulating and managing domain complexity as well as
+        many supporting libraries including entities.","downloads_count":168,"metadata":{"homepage_uri":"https://github.com/foobara/foobara","changelog_uri":"https://github.com/foobara/foobara/CHANGELOG.md","source_code_uri":"https://github.com/foobara/foobara","rubygems_mfa_required":"true"},"number":"0.0.4","summary":"Implements
+        command pattern for encapsulating and managing domain complexity as well as
+        many supporting libraries including entities.","platform":"ruby","rubygems_version":"\u003e=
+        0","ruby_version":"\u003e= 3.2.2","prerelease":false,"licenses":["AGPL-3.0"],"requirements":[],"sha":"ef36f9d71984a7fe20d6c8114664862720555def9e2751e69715b2867098a500","spec_sha":"543903772df5258fc23535d39020fb33a0e5758d91281b4effda3d3714e605b7"},{"authors":"Miles
+        Georgi","built_at":"2024-08-17T00:00:00.000Z","created_at":"2024-08-17T04:57:28.156Z","description":"Implements
+        command pattern for encapsulating and managing domain complexity as well as
+        many supporting libraries including entities.","downloads_count":169,"metadata":{"homepage_uri":"https://github.com/foobara/foobara","changelog_uri":"https://github.com/foobara/foobara/CHANGELOG.md","source_code_uri":"https://github.com/foobara/foobara","rubygems_mfa_required":"true"},"number":"0.0.3","summary":"Implements
+        command pattern for encapsulating and managing domain complexity as well as
+        many supporting libraries including entities.","platform":"ruby","rubygems_version":"\u003e=
+        0","ruby_version":"\u003e= 3.2.2","prerelease":false,"licenses":["AGPL-3.0"],"requirements":[],"sha":"0db03c0d2385439c95206aec0c647e8ef8202dee444c5207a3367c90cb33ba5e","spec_sha":"4ecaf5425258c218442df9964179bfaaf991dbbfabf85d73faec4b9eaa66bc95"},{"authors":"Miles
+        Georgi","built_at":"2024-06-21T00:00:00.000Z","created_at":"2024-06-21T05:38:22.322Z","description":"Implements
+        command pattern for encapsulating and managing domain complexity as well as
+        many supporting libraries including entities.","downloads_count":350,"metadata":{"homepage_uri":"https://github.com/foobara/foobara","changelog_uri":"https://github.com/foobara/foobara/CHANGELOG.md","source_code_uri":"https://github.com/foobara/foobara","rubygems_mfa_required":"true"},"number":"0.0.2","summary":"Implements
+        command pattern for encapsulating and managing domain complexity as well as
+        many supporting libraries including entities.","platform":"ruby","rubygems_version":"\u003e=
+        0","ruby_version":"\u003e= 3.2.2","prerelease":false,"licenses":["AGPL-3.0"],"requirements":[],"sha":"ad422fd1b1935f99e20cd1dd75349fd8536025c6f319044b6b9ba221d8f38db1","spec_sha":"c2422035ecdbb9ecd826fe8cb2f5e2362fd50c03080a05616472386f9b169404"},{"authors":"Miles
+        Georgi","built_at":"2024-05-31T00:00:00.000Z","created_at":"2024-05-31T15:05:53.459Z","description":"Implements
+        command pattern for encapsulating and managing domain complexity as well as
+        many supporting libraries including entities.","downloads_count":500,"metadata":{"homepage_uri":"https://github.com/foobara/foobara","changelog_uri":"https://github.com/foobara/foobara/CHANGELOG.md","source_code_uri":"https://github.com/foobara/foobara","rubygems_mfa_required":"true"},"number":"0.0.1","summary":"Implements
+        command pattern for encapsulating and managing domain complexity as well as
+        many supporting libraries including entities.","platform":"ruby","rubygems_version":"\u003e=
+        0","ruby_version":"\u003e= 3.2.2","prerelease":false,"licenses":["AGPL-3.0"],"requirements":[],"sha":"7c1bdcfdef5452f3df4ab485685766d5c4a11e6a32af08f321f4077fdc534a57","spec_sha":"8a76f3eb50841a24db2343b94fa8990f88a762867a0b5711a98bd041535deae0"}]'
+  recorded_at: Sat, 09 Nov 2024 03:43:08 GMT
+recorded_with: VCR 6.3.1
