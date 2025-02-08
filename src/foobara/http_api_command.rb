@@ -2,7 +2,7 @@ require "uri"
 require "net/http"
 
 module Foobara
-  module HttpApiGetCommand
+  module HttpApiCommand
     include Concern
 
     def execute
@@ -30,9 +30,9 @@ module Foobara
     end
 
     def issue_http_request
-      uri = URI(api_url)
-      uri.query = URI.encode_www_form(request_body)
-      self.response = Net::HTTP.get_response(uri, request_headers)
+      # :nocov:
+      raise "subclass responsibility"
+      # :nocov:
     end
 
     def build_result
