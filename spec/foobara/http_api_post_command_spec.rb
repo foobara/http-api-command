@@ -39,5 +39,38 @@ RSpec.describe Foobara::HttpApiPostCommand do
       expect(outcome).to be_success
       expect(result).to be_a(Hash)
     end
+
+    context "when using block form of base_url" do
+      let(:command_class) do
+        mixin = described_class
+
+        stub_class(:Post, Foobara::Command) do
+          include mixin
+
+          inputs do
+            foo :string, :required
+          end
+
+          result do
+            args Hash
+            data :string
+            files Hash
+            form Hash
+            headers Hash
+            json Hash
+            origin :string
+            url :string
+          end
+
+          base_url { "https://httpbin.org" }
+          path "/post"
+        end
+      end
+
+      it "is successful",  vcr: { record: :none } do
+        expect(outcome).to be_success
+        expect(result).to be_a(Hash)
+      end
+    end
   end
 end

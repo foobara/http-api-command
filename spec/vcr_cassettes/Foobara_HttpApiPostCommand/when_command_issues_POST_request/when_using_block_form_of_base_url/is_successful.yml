@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://httpbin.org/post
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - httpbin.org
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 17 Feb 2025 21:02:36 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '447'
+      Connection:
+      - keep-alive
+      Server:
+      - gunicorn/19.9.0
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: UTF-8
+      string: "{\n  \"args\": {}, \n  \"data\": \"{}\", \n  \"files\": {}, \n  \"form\":
+        {}, \n  \"headers\": {\n    \"Accept\": \"*/*\", \n    \"Accept-Encoding\":
+        \"gzip;q=1.0,deflate;q=0.6,identity;q=0.3\", \n    \"Content-Length\": \"2\",
+        \n    \"Content-Type\": \"application/json\", \n    \"Host\": \"httpbin.org\",
+        \n    \"User-Agent\": \"Ruby\", \n    \"X-Amzn-Trace-Id\": \"Root=1-67b3a3ec-396cfa8956ad524b5f1ff5da\"\n
+        \ }, \n  \"json\": {}, \n  \"origin\": \"69.42.19.188\", \n  \"url\": \"https://httpbin.org/post\"\n}\n"
+  recorded_at: Mon, 17 Feb 2025 21:02:36 GMT
+recorded_with: VCR 6.3.1

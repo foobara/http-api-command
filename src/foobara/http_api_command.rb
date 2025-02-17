@@ -4,6 +4,7 @@ require "net/http"
 module Foobara
   module HttpApiCommand
     include Concern
+    include Concerns::Url
 
     def execute
       build_request_body
@@ -14,10 +15,6 @@ module Foobara
     end
 
     attr_accessor :request_body, :request_headers, :response, :response_body
-
-    def api_url
-      @api_url ||= instance_eval(&self.class.foobara_url_block)
-    end
 
     def build_request_body
       self.request_body = {}
@@ -50,18 +47,6 @@ module Foobara
              end
 
       self.response_body = JSON.parse(json)
-    end
-
-    module ClassMethods
-      attr_accessor :foobara_url_block
-
-      def url(string = nil, &block)
-        self.foobara_url_block = if block_given?
-                                   block
-                                 else
-                                   proc { string }
-                                 end
-      end
     end
   end
 end

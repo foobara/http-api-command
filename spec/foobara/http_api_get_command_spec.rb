@@ -13,7 +13,8 @@ RSpec.describe Foobara::HttpApiGetCommand do
 
           result [Hash]
 
-          url "https://rubygems.org/api/v1/search.json"
+          base_url "https://rubygems.org/api/v1"
+          path "/search.json"
 
           def build_request_body
             self.request_body = { query: }

@@ -1,3 +1,7 @@
+## [0.0.4] - 2025-02-17
+
+- Support separate base_url and path helpers
+
 ## [0.0.3] - 2025-02-08
 
 - Implement HttpApiPostCommand
