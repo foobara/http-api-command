@@ -9,7 +9,20 @@ module Foobara
         end
 
         module ClassMethods
-          attr_accessor :foobara_base_url_block, :foobara_base_url, :foobara_path, :foobara_url_block, :foobara_url
+          attr_accessor :foobara_base_url_block,
+                        :foobara_base_url,
+                        :foobara_path,
+                        :foobara_url_block,
+                        :foobara_url,
+                        :foobara_http_method
+
+          def http_method(method = nil)
+            if method
+              self.foobara_http_method = method
+            else
+              foobara_http_method || :get
+            end
+          end
 
           def base_url(url = nil, &block)
             if block_given?

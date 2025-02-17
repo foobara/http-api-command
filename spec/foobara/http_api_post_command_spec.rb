@@ -1,10 +1,12 @@
-RSpec.describe Foobara::HttpApiPostCommand do
+RSpec.describe Foobara::HttpApiCommand do
   context "when command issues POST request" do
     let(:command_class) do
       mixin = described_class
 
       stub_class(:Post, Foobara::Command) do
         include mixin
+
+        http_method :post
 
         inputs do
           foo :string, :required
@@ -35,7 +37,7 @@ RSpec.describe Foobara::HttpApiPostCommand do
       { foo: "bar" }
     end
 
-    it "is successful", vcr: { record: :none } do
+    it "is successful",  vcr: { record: :none } do
       expect(outcome).to be_success
       expect(result).to be_a(Hash)
     end
@@ -46,6 +48,8 @@ RSpec.describe Foobara::HttpApiPostCommand do
 
         stub_class(:Post, Foobara::Command) do
           include mixin
+
+          http_method :post
 
           inputs do
             foo :string, :required

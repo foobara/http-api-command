@@ -1,4 +1,4 @@
-RSpec.describe Foobara::HttpApiGetCommand do
+RSpec.describe Foobara::HttpApiCommand do
   describe "#run" do
     context "when command hits rubygems search API" do
       let(:command_class) do
