@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    foobara-http-api-command (0.0.5)
+    foobara-http-api-command (0.0.6)
       foobara
 
 GEM

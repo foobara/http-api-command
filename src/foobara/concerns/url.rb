@@ -8,14 +8,14 @@ module Foobara
           @api_url ||= self.class.compute_api_url(self)
         end
 
-        module ClassMethods
-          attr_accessor :foobara_base_url_block,
-                        :foobara_base_url,
-                        :foobara_path,
-                        :foobara_url_block,
-                        :foobara_url,
-                        :foobara_http_method
+        inherited_overridable_class_attr_accessor :foobara_base_url_block,
+                                                  :foobara_base_url,
+                                                  :foobara_path,
+                                                  :foobara_url_block,
+                                                  :foobara_url,
+                                                  :foobara_http_method
 
+        module ClassMethods
           def http_method(method = nil)
             if method
               self.foobara_http_method = method

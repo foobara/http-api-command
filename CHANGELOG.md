@@ -1,4 +1,4 @@
-## [0.0.5] - 2025-02-17
+## [0.0.6] - 2025-02-17
 
 - Support separate base_url and path helpers
 - Eliminate concept of separate mixins for different HTTP methods
