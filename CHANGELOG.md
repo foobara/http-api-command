@@ -1,3 +1,8 @@
+## [0.0.7] - 2025-02-27
+
+- Add http_timeout option
+- Bump Ruby to 3.4.2
+
 ## [0.0.6] - 2025-02-17
 
 - Support separate base_url and path helpers
