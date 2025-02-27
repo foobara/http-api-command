@@ -8,6 +8,19 @@ module Foobara
           @api_url ||= self.class.compute_api_url(self)
         end
 
+        def api_uri_object
+          @api_uri_object ||= URI(api_url)
+        end
+
+        def net_http
+          @net_http ||= begin
+            uri = URI(api_url)
+            Net::HTTP.new(uri.host, uri.port).tap do |http|
+              http.use_ssl = uri.scheme == "https"
+            end
+          end
+        end
+
         inherited_overridable_class_attr_accessor :foobara_base_url_block,
                                                   :foobara_base_url,
                                                   :foobara_path,

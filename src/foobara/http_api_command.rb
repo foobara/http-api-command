@@ -27,19 +27,28 @@ module Foobara
     end
 
     def issue_http_request
-      case self.class.http_method
-      when :get
-        uri = URI(api_url)
-        uri.query = URI.encode_www_form(request_body)
-        self.response = Net::HTTP.get_response(uri, request_headers)
-      when :post
-        uri = URI.parse(api_url)
-        self.response = Net::HTTP.post(uri, JSON.generate(request_body), request_headers)
-      else
-        # :nocov:
-        raise "Unknown http method #{self.class.http_method}"
-        # :nocov:
-      end
+      request = case self.class.http_method
+                when :get
+                  uri = if request_body.empty?
+                          api_uri_object
+                        else
+                          api_uri_object.dup.tap do |new_uri|
+                            new_uri.query = URI.encode_www_form(request_body)
+                          end
+                        end
+
+                  Net::HTTP::Get.new(uri.request_uri, request_headers)
+                when :post
+                  Net::HTTP::Post.new(api_uri_object.request_uri, request_headers).tap do |post|
+                    post.body = JSON.generate(request_body)
+                  end
+                else
+                  # :nocov:
+                  raise "Unknown http method #{self.class.http_method}"
+                  # :nocov:
+                end
+
+      self.response = net_http.request(request)
     end
 
     def build_result
