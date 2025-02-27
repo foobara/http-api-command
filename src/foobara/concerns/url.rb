@@ -4,29 +4,26 @@ module Foobara
       module Url
         include Concern
 
+        def net_http
+          @net_http ||= self.class.compute_http(self)
+        end
+
         def api_url
           @api_url ||= self.class.compute_api_url(self)
         end
 
         def api_uri_object
-          @api_uri_object ||= URI(api_url)
-        end
-
-        def net_http
-          @net_http ||= begin
-            uri = URI(api_url)
-            Net::HTTP.new(uri.host, uri.port).tap do |http|
-              http.use_ssl = uri.scheme == "https"
-            end
-          end
+          @api_uri_object ||= self.class.compute_uri_object(self)
         end
 
         inherited_overridable_class_attr_accessor :foobara_base_url_block,
                                                   :foobara_base_url,
                                                   :foobara_path,
+                                                  :foobara_path_block,
                                                   :foobara_url_block,
                                                   :foobara_url,
-                                                  :foobara_http_method
+                                                  :foobara_http_method,
+                                                  :foobara_http_timeout
 
         module ClassMethods
           def http_method(method = nil)
@@ -55,9 +52,21 @@ module Foobara
             end
           end
 
-          def path(path = nil)
-            if path
+          def path(path = nil, &block)
+            if block_given?
+              unless path.nil?
+                # :nocov:
+                raise ArgumentError, "Cannot specify both path and block"
+                # :nocov:
+              end
+
+              self.foobara_path_block = block
+            elsif path
               self.foobara_path = path
+            else
+              # :nocov:
+              raise ArgumentError, "No path specified"
+              # :nocov:
             end
           end
 
@@ -79,28 +88,77 @@ module Foobara
             end
           end
 
-          def compute_api_url(command)
-            if foobara_url
-              foobara_url
-            elsif foobara_url_block
-              command.instance_eval(&foobara_url_block)
-            elsif foobara_path
-              base = if foobara_base_url
-                       foobara_base_url
-                     elsif foobara_base_url_block
-                       command.instance_eval(&foobara_base_url_block)
-                     else
-                       # :nocov:
-                       raise "Not able to determine the api url. Did you remember to call .url or .path and .base_url?"
-                       # :nocov:
-                     end
-
-              "#{base}#{foobara_path}"
+          def http_timeout(timeout = nil)
+            if timeout
+              self.foobara_http_timeout = timeout
             else
-              # :nocov:
-              raise "Not able to determine the api url. Did you remember to call .url or .path and .base_url?"
-              # :nocov:
+              foobara_http_timeout
             end
+          end
+
+          def compute_uri_object(command)
+            return @compute_uri_object if @compute_uri_object
+
+            uri = URI(compute_api_url(command))
+
+            unless foobara_base_url_block || foobara_path_block || foobara_url_block
+              @compute_uri_object = uri
+            end
+
+            uri
+          end
+
+          def compute_api_url(command)
+            return @compute_api_url if @compute_api_url
+
+            url = if foobara_url
+                    foobara_url
+                  elsif foobara_url_block
+                    command.instance_eval(&foobara_url_block)
+                  else
+                    path = if foobara_path
+                             foobara_path
+                           elsif foobara_path_block
+                             command.instance_eval(&foobara_path_block)
+                           end
+
+                    base = if foobara_base_url
+                             foobara_base_url
+                           elsif foobara_base_url_block
+                             command.instance_eval(&foobara_base_url_block)
+                           else
+                             # :nocov:
+                             raise "Not able to determine the api url. " \
+                                   "Did you remember to call .url or .path and .base_url?"
+                             # :nocov:
+                           end
+
+                    "#{base}#{path}"
+                  end
+
+            unless foobara_base_url_block || foobara_path_block || foobara_url_block
+              @compute_api_url = url
+            end
+
+            url
+          end
+
+          def compute_http(command)
+            return @net_http if @net_http
+
+            uri = URI(command.api_url)
+            computed_http = Net::HTTP.new(uri.host, uri.port).tap do |http|
+              http.use_ssl = uri.scheme == "https"
+              if http_timeout
+                http.read_timeout = http_timeout
+              end
+            end
+
+            unless foobara_base_url_block || foobara_path_block || foobara_url_block
+              @net_http = computed_http
+            end
+
+            computed_http
           end
         end
       end

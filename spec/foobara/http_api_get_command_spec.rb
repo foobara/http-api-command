@@ -69,6 +69,30 @@ RSpec.describe Foobara::HttpApiCommand do
         expect(outcome).to be_success
         expect(result).to be_an(Array)
       end
+
+      context "when only specifying the path with a block" do
+        let(:command_class) do
+          mixin = described_class
+
+          stub_class(:GetVersions, Foobara::Command) do
+            include mixin
+
+            inputs do
+              gem_name :string, :required
+            end
+
+            result [Hash]
+
+            base_url "https://rubygems.org"
+            path { "/api/v1/versions/#{gem_name}.json" }
+          end
+        end
+
+        it "is successful",  vcr: { record: :none } do
+          expect(outcome).to be_success
+          expect(result).to be_an(Array)
+        end
+      end
     end
   end
 end

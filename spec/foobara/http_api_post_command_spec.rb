@@ -7,6 +7,7 @@ RSpec.describe Foobara::HttpApiCommand do
         include mixin
 
         http_method :post
+        http_timeout 120
 
         inputs do
           foo :string, :required
