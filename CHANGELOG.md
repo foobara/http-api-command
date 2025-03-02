@@ -1,3 +1,7 @@
+## [0.0.8] - 2025-03-02
+
+- Fix bug caused by reusing Net::HTTP objects for ssl connections
+
 ## [0.0.7] - 2025-02-27
 
 - Add http_timeout option

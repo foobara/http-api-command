@@ -5,6 +5,9 @@ module Foobara
         include Concern
 
         def net_http
+          # unclear why, but, seems like if we're doing SSL we have to be single-use, hmmm...
+          return @net_http if @net_http && !@net_http.use_ssl?
+
           @net_http ||= self.class.compute_http(self)
         end
 
@@ -144,7 +147,8 @@ module Foobara
           end
 
           def compute_http(command)
-            return @net_http if @net_http
+            # unclear why, but, seems like if we're doing SSL we have to be single-use, hmmm...
+            return @net_http if @net_http && !@net_http.use_ssl?
 
             uri = URI(command.api_url)
             computed_http = Net::HTTP.new(uri.host, uri.port).tap do |http|
