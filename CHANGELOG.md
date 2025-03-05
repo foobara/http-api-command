@@ -1,3 +1,7 @@
+## [0.0.9] - 2025-03-05
+
+- Add dependency on JSON where needed
+
 ## [0.0.8] - 2025-03-02
 
 - Fix bug caused by reusing Net::HTTP objects for ssl connections

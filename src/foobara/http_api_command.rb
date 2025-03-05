@@ -1,5 +1,6 @@
 require "uri"
 require "net/http"
+require "json"
 
 module Foobara
   module HttpApiCommand
