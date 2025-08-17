@@ -38,7 +38,7 @@ RSpec.describe Foobara::HttpApiCommand do
       { foo: "bar" }
     end
 
-    it "is successful",  vcr: { record: :none } do
+    it "is successful", vcr: { record: :none } do
       expect(outcome).to be_success
       expect(result).to be_a(Hash)
     end
@@ -72,7 +72,7 @@ RSpec.describe Foobara::HttpApiCommand do
         end
       end
 
-      it "is successful",  vcr: { record: :none } do
+      it "is successful", vcr: { record: :none } do
         expect(outcome).to be_success
         expect(result).to be_a(Hash)
       end

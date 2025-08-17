@@ -12,6 +12,7 @@ module Foobara
       build_request_headers
       issue_http_request
       parse_response
+
       build_result
     end
 
