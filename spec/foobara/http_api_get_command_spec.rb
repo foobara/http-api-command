@@ -88,7 +88,7 @@ RSpec.describe Foobara::HttpApiCommand do
           end
         end
 
-        it "is successful",  vcr: { record: :none } do
+        it "is successful", vcr: { record: :none } do
           expect(outcome).to be_success
           expect(result).to be_an(Array)
         end
