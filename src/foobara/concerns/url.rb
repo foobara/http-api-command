@@ -40,54 +40,54 @@ module Foobara
           def base_url(url = nil, &block)
             if block_given?
               unless url.nil?
-                # :nocov:
+                # simplecov:disable
                 raise ArgumentError, "Cannot specify both url and block"
-                # :nocov:
+                # simplecov:enable
               end
 
               self.foobara_base_url_block = block
             elsif url
               self.foobara_base_url = url
             else
-              # :nocov:
+              # simplecov:disable
               raise ArgumentError, "No base url specified"
-              # :nocov:
+              # simplecov:enable
             end
           end
 
           def path(path = nil, &block)
             if block_given?
               unless path.nil?
-                # :nocov:
+                # simplecov:disable
                 raise ArgumentError, "Cannot specify both path and block"
-                # :nocov:
+                # simplecov:enable
               end
 
               self.foobara_path_block = block
             elsif path
               self.foobara_path = path
             else
-              # :nocov:
+              # simplecov:disable
               raise ArgumentError, "No path specified"
-              # :nocov:
+              # simplecov:enable
             end
           end
 
           def url(uri = nil, &block)
             if block_given?
               unless uri.nil?
-                # :nocov:
+                # simplecov:disable
                 raise ArgumentError, "Cannot specify both uri and block"
-                # :nocov:
+                # simplecov:enable
               end
 
               self.foobara_url_block = block
             elsif uri
               self.foobara_url = uri
             else
-              # :nocov:
+              # simplecov:disable
               raise ArgumentError, "Must give either a url or a block that returns  url"
-              # :nocov:
+              # simplecov:enable
             end
           end
 
@@ -130,10 +130,10 @@ module Foobara
                            elsif foobara_base_url_block
                              command.instance_eval(&foobara_base_url_block)
                            else
-                             # :nocov:
+                             # simplecov:disable
                              raise "Not able to determine the api url. " \
                                    "Did you remember to call .url or .path and .base_url?"
-                             # :nocov:
+                             # simplecov:enable
                            end
 
                     "#{base}#{path}"

@@ -45,9 +45,9 @@ module Foobara
                     post.body = JSON.generate(request_body)
                   end
                 else
-                  # :nocov:
+                  # simplecov:disable
                   raise "Unknown http method #{self.class.http_method}"
-                  # :nocov:
+                  # simplecov:enable
                 end
 
       self.response = net_http.request(request)
@@ -61,10 +61,10 @@ module Foobara
       json = if response.is_a?(Net::HTTPSuccess)
                response.body
              else
-               # :nocov:
+               # simplecov:disable
                raise "Could not successfully hit #{api_url}: " \
                      "#{response.code} #{response.message}"
-               # :nocov:
+               # simplecov:enable
              end
 
       self.response_body = JSON.parse(json)
