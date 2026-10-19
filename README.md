@@ -1,50 +1,84 @@
-# Foobara::EmptyRubyProjectGenerator
+# Foobara::HttpApiCommand
 
-TODO: Delete this and the text below, and describe your gem
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library
-into a gem. Put your Ruby code in the file `lib/foobara/empty_ruby_project_generator`. To experiment with that code,
-run `bin/console` for an interactive prompt.
+`foobara-http-api-command` encapsulates an external HTTP API call in a Foobara command.
 
 ## Installation
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it
-to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with
-instructions to install your gem from git if you don't plan to release to RubyGems.org.
+Add `foobara-http-api-command` to your Gemfile or .gemspec file and `bundle install`.
 
-Install the gem and add to the application's Gemfile by executing:
-
-    $ bundle add UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
-
-If bundler is not being used to manage dependencies, install the gem by executing:
-
-    $ gem install UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+Or even just `gem install foobara-http-api-command` if playing with it directly in the scripts.
 
 ## Usage
 
-TODO: Write usage instructions here
+### Making a GET request
 
-## Development
+Require the library and include `Foobara::HttpApiCommand` in a command class.
 
-If using Foobara locally, then run the following (TODO: make this no-longer necessary.)
+```ruby
+require "foobara/http_api_command"
 
-```bash
-bundle config set disable_local_branch_check true
+class Search < Foobara::Command
+  include Foobara::HttpApiCommand
+
+  inputs do
+    query :string, :required
+  end
+
+  result [Hash]
+
+  base_url "https://rubygems.org/api/v1"
+  path "/search.json"
+
+  def build_request_body
+    self.request_body = { query: }
+  end
+end
+
+results = Search.run!(query: "foobara")
+pp results.first # => an Array of Hash results from the API
 ```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can
-also run `bin/console` for an interactive prompt that will allow you to experiment.
+### Making a POST request
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the
-version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version,
-push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+To make a POST request, set `http_method :post`. The request body will then be sent as JSON.
+
+```ruby
+require "foobara/http_api_command"
+
+class Post < Foobara::Command
+  include Foobara::HttpApiCommand
+
+  inputs do
+    foo :string, :required
+  end
+
+  result Hash
+  url "https://httpbin.org/post"
+  http_method :post
+  http_timeout 120
+
+  def build_request_body
+    self.request_body = { foo: }
+  end
+end
+
+response = Post.run!(foo: "bar")
+pp response.fetch("json") # => {"foo"=>"bar"}
+```
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub
-at https://github.com/[USERNAME]/foobara-empty_ruby_project_generator.
+Contributions are welcome on Github at [foobara/http-api-command](https://github.com/foobara/http-api-command).
+
+To work on an existing issue or submit a PR:
+
+1. Fork the repository and clone it to your local machine
+2. Run `bundle install` to install dependencies
+3. Run `rake` to ensure that everything works as expected before making any changes
+4. Implement your changes
+5. Re-run `rake` to make sure that all tests and Rubocop pass
+6. Commit your changes, push to GitHub and open a Pull Request for review
 
 ## License
 
-This files in this project are licensed under the
-Mozilla Public License Version 2.0. Please see LICENSE.txt for more info.
+This project is licensed under the MPL-2.0 license. Please see [LICENSE.txt](LICENSE.txt) for more information.
