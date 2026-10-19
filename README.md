@@ -63,7 +63,7 @@ results # => an Array of Hash results from the API
 - `result [Hash]` says the command should return an array of hashes as the expected output
 - `base_url` and `path` together make the address: `https://rubygems.org/api/v1/search.json`
 - `build_request_body` sets the request body to `{ query: }`. For a GET request this ends up in the URL as a query parameter.
-- `Search.run!(query: "foobara:)` runs the command and returns the parsed JSON.
+- `Search.run!(query: "foobara")` runs the command and returns the parsed JSON.
 
 In the above example, we make a real request to RubyGems.org.
 
@@ -116,7 +116,7 @@ response.fetch("json") # => {"foo"=>"bar"}
 What is new compared with the GET example:
 
 - `url "https://httpbin.org/post"` gives the complete address in one go, instead of `base_url` plus `path`.
-- `http_method :post` makes it a POST
+- `http_method :post` makes it a POST request
 - `http_timeout 120` waits up to 120 seconds for a reply
 - `result Hash` says the command returns one hash(not an array of them)
 - `response.fetch("json")` reads the `json` part of the reply. This echo service sends your JSON back under that name. 
@@ -129,7 +129,7 @@ To see it, add `p response.fetch("json")` at the end of the file and run it with
 | --- | --- |
 | `url "https://..."` | The complete address. It can also be a block. |
 | `base_url` and `path` | Two halves of the address. Each can also be a block, which runs inside the command instance |
-| `http_method :post` | Sends a POST. GET is the default, and only `:get` and `:post` are supported |
+| `http_method :post` | Sends a POST request. GET is the default, and only `:get` and `:post` are supported |
 | `http_timeout` | Specifies how many seconds to wait for a reply. It sets only the read timeout |
 
 ### Things to watch out for
@@ -162,7 +162,7 @@ You can override `build_result` to change parsed `response_body` into whatever y
 | What comes back | What you get |
 | --- | --- |
 | A successful (2xx) response | It's parsed as JSON |
-| A response that isn't 2xx | A `RunTimeError` is raised with the response message |
+| A response that isn't 2xx | A `RuntimeError` is raised with the response message |
 | A successful response with an empty body, or a body that isn't JSON | `JSON::ParserError` is raised |
 | A network problem such as a failed connection | The error is raised as is |
 
